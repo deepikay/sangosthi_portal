@@ -1,0 +1,171 @@
+{% extends "app/layoutProfile.html" %}
+
+
+{%block content%}
+{{user}}
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title">ADD Show </h3>
+  </div>
+
+  <!-- /.box-header -->
+  <!-- form start -->
+  <section id="ShowForm">
+      <form action="/ShowAdd" enctype="multipart/form-data" method="post" class="form" data-cities-url="{% url 'ajax_load_cities' %}" data-questions-url="{% url 'load_questions' %}"novalidate>
+{% csrf_token %}
+    <div class="box-body">
+      <!-- {{form.as_ul}} -->
+      <!-- <tr><th>
+        <label for="id_content">Topic:</label></th><td>
+          <select name="content" required id="id_content">\n
+            <option value="" selected>-</option>
+            \n\n</select></td></tr> -->
+
+      <div class="form-group" id="id_category">
+        <label>Category</label>
+      <p>  {{form.category}} </p>
+      </div>
+      <div class="form-group">
+      <label for="id_content">Topic:</label>
+       <select name="content" required id="id_content">\n
+      {{form.content}}
+    </select></div>
+      <!-- <div class="form-group" id="id_content">
+        <label >Content </label>
+        {{form.content}}
+      </div> -->
+      <div class="form-group">
+        <label>Recording</label>
+        {{form.recording}}
+      </div>
+      <div class="form-group">
+        <label>Cohort</label>
+        {{form.cohort}}
+      </div>
+      <div class="form-group">
+        <label>STAT</label>
+        {{form.STAT}}
+      </div>
+      <div class="form-group">
+        <label>show_stats</label>
+        {{form.show_stats}}
+      </div>
+
+      <div class="form-group" id="id_NoOfQuestions" >
+        <label>No Of Questions(Max 10)</label>
+        {{form.NoOfQuestions}}
+
+
+      </select>
+      </div>
+
+
+      <div class="form-group" id="id_QA1" hidden>
+        <label >QA1</label>
+        {{form.QA1}}
+      </div>
+      <div class="form-group" id="id_QA2" hidden>
+        <label >QA2</label>
+        {{form.QA2}}
+      </div>
+      <div class="form-group" id="id_QA3" hidden>
+        <label >QA3</label>
+        {{form.QA3}}
+      </div>
+      <div class="form-group" id="id_QA4" hidden>
+        <label >QA4</label>
+        {{form.QA4}}
+      </div>
+      <div class="form-group" id="id_QA5" hidden>
+        <label >QA5</label>
+        {{form.QA5}}
+      </div>
+      <div class="form-group" id="id_QA6" hidden>
+        <label >QA6</label>
+        {{form.QA6}}
+      </div>
+      <div class="form-group" id="id_QA7" hidden>
+        <label >QA7</label>
+        {{form.QA7}}
+      </div>
+      <div class="form-group" id="id_QA8" hidden>
+        <label >QA8</label>
+        {{form.QA8}}
+      </div>
+      <div class="form-group" id="id_QA9" hidden>
+        <label >QA9</label>
+        {{form.QA9}}
+      </div>
+      <div class="form-group" id="id_QA10" hidden>
+        <label >QA10</label>
+        {{form.QA10}}
+      </div>
+<!-- <li><label for="id_QA">QA:</label>
+   <select name="QA" required multiple="multiple" id="id_QA">\n
+      <option value="1">Compile - Static/Uploads/Audio_Filescontent/\u0917\u0930\u092d\u0935\u0938\u0925_\u0915_\u0906\u092e_\u0938\u092e\u0938\u092f\u090f_I.wav</option>
+      \n\n  <option value="2">Kuch added - Static/Uploads/Audio_Filescontent/MCP_Card.wav</option>
+      \n\n  <option value="3">  Content1 - Static/Uploads/Audio_Files/content/sample_content.wav</option>\n\n</select></li> -->
+    </div>
+    <!-- /.box-body -->
+
+    <div class="box-footer">
+      <input type="submit" value="Submit" class="btn btn-primary" />
+
+    </div>
+  </form>
+</section>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_category").change(function () {
+      var url = $("#ShowForm").attr("data-cities-url");  // get the url of the `load_cities` view
+      var e= $("#id_category :selected").val();
+          var f= $("#id_category").val();
+    //  var   categoryId =e.options[e.selectedIndex].text;
+    //  window.alert(f);
+      $.ajax({                       // initialize an AJAX request
+        url: 'ajax/load-cities/',                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'category': e       // add the category id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_content").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+    $("#id_NoOfQuestions").change(function () {
+      var e= $("#id_NoOfQuestions :selected").val();
+    //  window.alert(e);
+
+      for (i = 0; i <= 10; i++) {
+        g=i+1;
+        x='id_QA'+ g.toString()
+        if(g<=e){
+          document.getElementById(x).style.display = "block"}
+        else {
+          document.getElementById(x).style.display = "none"}
+      }
+
+
+
+      //$("#id_QA1").invisible();
+
+
+    });
+
+    (function($) {
+        $.fn.invisible = function() {
+            return this.each(function() {
+                $(this).css("visibility", "hidden");
+            });
+        };
+        $.fn.visible = function() {
+            return this.each(function() {
+                $(this).css("visibility", "visible");
+            });
+        };
+    }(jQuery));
+
+  </script>
+{%endblock%}

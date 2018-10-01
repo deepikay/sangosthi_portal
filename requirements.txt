@@ -1,0 +1,12 @@
+Django==1.11.15
+django-author==1.0.2
+django-decorator-include==1.4.1
+django-decorators==0.1.1
+numpy==1.15.2
+pandas==0.23.4
+Pillow==5.2.0
+pkg-resources==0.0.0
+python-dateutil==2.7.3
+pytz==2018.5
+setuptools-git==1.2
+six==1.11.0
