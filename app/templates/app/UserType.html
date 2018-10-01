@@ -1,0 +1,38 @@
+{% if kindofadmin == 1 %}
+<!-- MAIN ADMIN eg IIIT Delhi -->
+        <li>
+        
+          <a href="{% url 'signup2' %}">
+            <i class="fa fa-th"></i> <span>Make Super Admins</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
+        </li>
+{% endif %}
+
+
+
+
+{% if kindofadmin == 2 %}  
+<!-- SUPER ADMIN  -->
+        <li>
+        
+          <a href="{% url 'signup3' %}">
+            <i class="fa fa-th"></i> <span>Make User Admins</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
+        </li>
+{% endif %}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+{% extends "app/layoutProfile.html" %}
+{%block content%}
+
+<div class="box">
+
+  <section id="UserForm">
+{% csrf_token %}
+    <div class="box-body">
+
+      <div class="form-group">
+        <label>Name</label>
+        {{userprof.full_name}}
+        <!--input type="text" class="form-control" placeholder="Enter PhoneNumber (10 digits +91)"-->
+      </div>
+      <div class="form-group">
+        <label>Mail ID</label>
+        {{userprof.email}}
+        <!--input type="text" class="form-control" placeholder="Enter ID of the ASHA..."-->
+      </div>
+      <div class="form-group">
+        <label> Location </label>
+        {{userprof.location}}
+        <!-- <input type="text" class="form-control" placeholder={{user.location}} disabled> -->
+      </div>
+
+
+    </div>
+    <!-- /.box-body -->
+
+</section>
+
+{% if userprof.mail_sent%}
+<button type="button" style="height:50px; width:200px; background-color: green" class="btn btn-block btn-primary btn-sm disabled">
+Mail Sent
+</button>>
+{%endif%}
+{% if not userprof.mail_sent%}
+<button type="button" onclick="location.href='send_mail';"  style="height:50px; width:200px; background-color: green" class="btn btn-block btn-primary btn-sm ">
+Approve and Send Mail
+</button>
+{%endif%}
+<button type="button"  onclick="location.href='deleteuser';"style="height:50px; width:200px; background-color: red" class="btn btn-block btn-primary btn-sm ">
+Delete
+</button>
+
+</div>
+{%endblock%}
