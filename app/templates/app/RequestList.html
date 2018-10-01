@@ -1,0 +1,10 @@
+{% extends "app/layoutProfile.html" %}
+{%block content%}
+
+{% for i in list %}
+<!-- <input type="button" action="request" type="button" style="height:50px; width:200px" class="btn btn-block btn-primary btn-sm">
+ --> <input type="button" onclick="location.href='request/'+{{i.id}};" value={{i}} style="height:50px; width:200px" class="btn btn-block btn-primary btn-sm" />
+ {{i.id}}
+</input>
+ {% endfor %}
+{% endblock %}

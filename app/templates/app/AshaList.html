@@ -1,0 +1,22 @@
+{% extends "app/layoutProfile.html" %}
+{%block content%}
+{{user}}
+{{user.location}}
+
+<div class="box">
+{% for item in Items%}
+  <a href="{% url 'lel'  user.id %}" type="button" style="height:50px; width:200px" class="btn btn-block btn-primary btn-sm ">
+   {{item}}
+  </a>
+
+{%endfor %}
+
+
+{% for item in Disable%}
+<button type="button" style="height:50px; width:200px" class="btn btn-block btn-primary btn-sm disabled">
+
+  {{item}}
+  </button>
+{%endfor %}
+</div>
+{%endblock%}
