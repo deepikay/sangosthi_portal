@@ -1,0 +1,49 @@
+s{% extends "app/layoutProfile.html" %}
+
+
+{%block content%}
+{{user}}
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title">ADD AUDIO </h3>
+  </div>
+
+  <!-- /.box-header -->
+  <!-- form start -->
+  <section id="loginForm">
+      <form action="/AudioFileAdd" enctype="multipart/form-data" method="post" class="form">
+{% csrf_token %}
+    <div class="box-body">
+
+      <div class="form-group">
+        <label>Audio For</label>
+        {{form.audioFor}}
+        <!--input type="text" class="form-control" placeholder="Enter PhoneNumber (10 digits +91)"-->
+      </div>
+      <div class="form-group">
+        <label>Name </label>
+        {{form.name}}
+        <!--input type="text" class="form-control" placeholder="Enter PhoneNumber (10 digits +91)"-->
+      </div>
+      <div class="form-group">
+        <label>File Upload</label>
+        {{form.file}}
+        <!--input type="text" class="form-control" placeholder="Enter PhoneNumber (10 digits +91)"-->
+      </div>
+      <div class="form-group">
+        <label>Localized</label>
+        {{form.localized}}
+        <!--input type="text" class="form-control" placeholder="Enter PhoneNumber (10 digits +91)"-->
+      </div>
+
+    </div>
+    <!-- /.box-body -->
+
+    <div class="box-footer">
+      <input type="submit" value="Submit" class="btn btn-primary" />
+
+    </div>
+  </form>
+</section>
+</div>
+{%endblock%}

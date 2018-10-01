@@ -1,0 +1,27 @@
+  <section id="UserForm">
+      <form action=""  class="form">
+{% csrf_token %}
+    <div class="box-body">
+
+      <div class="form-group">
+        <label>Name</label>
+        {{userprof.full_name}}
+        <!--input type="text" class="form-control" placeholder="Enter PhoneNumber (10 digits +91)"-->
+      </div>
+      <div class="form-group">
+        <label>Mail ID</label>
+        {{userprof.email}}
+        <!--input type="text" class="form-control" placeholder="Enter ID of the ASHA..."-->
+      </div>
+      <div class="form-group">
+        <label> Location </label>
+        {{userprof.location}}
+        <!-- <input type="text" class="form-control" placeholder={{user.location}} disabled> -->
+      </div>
+
+
+    </div>
+    <!-- /.box-body -->
+
+  </form>
+</section>
